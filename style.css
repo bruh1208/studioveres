@@ -1,5 +1,5 @@
 body {
-    background-image: url('../img/fundo.png');
+    background-image: url('../fundo.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -24,7 +24,7 @@ header {
 .imagem-circular {
     width: 130px; /* ajuste o tamanho da imagem */
     height: 130px; /* ajuste o tamanho da imagem */
-    background-image: url('../img/imagem cv.jpg'); /* substitua por sua imagem */
+    background-image: url('../imagem cv.jpg'); /* substitua por sua imagem */
     background-size: cover;
     border-radius: 50%; /* torna a imagem circular */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* opcional, para adicionar sombra */

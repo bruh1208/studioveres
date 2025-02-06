@@ -1,0 +1,16 @@
+document.getElementById("form-agendamento").addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    let nome = document.getElementById("nome").value;
+    let telefone = document.getElementById("telefone").value;
+    let procedimento = document.getElementById("procedimento").value;
+
+    if (nome && telefone && procedimento) {
+        let mensagem = "Olá, meu nome é ${nome} e gostaria de agendar um horário para ${procedimento}. Meu contato: ${telefone}" ;
+        let linkWhatsApp = "https://wa.me/+5541992730281?text=${encodeURIComponent(mensagem)}";
+        window.open(linkWhatsApp, "_blank");
+    } else {
+        alert("Preencha todos os campos!");
+    }
+});
+

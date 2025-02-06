@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studioveres - Extensão de Cílios</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Studioveres</h1>
+    <nav>
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#agendamento">Agendamento</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+    
+
+  </header>
+
+<div class="imagem-circular"></div>
+
+  <section id="hero">
+    <h2>Realce sua beleza com cílios perfeitos!</h2>
+    <p>Agende seu horário e transforme seu olhar.</p>
+    <a href="#agendamento" class="btn">Agendar agora</a>
+  </section>
+  <section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <ul>
+      <li>Volume Brasileiro - R$150</li>
+      <li>Volume Egípcio - R$150</li>
+      <li>Volume Fox - R$150</li>
+      <li>Mega Volume - R$170</li>
+      <li>Efeito Americano - R$180</li>
+      <li>Efeito Híbrido - R$150</li>
+      <li>Henna + Designer - R$50</li>
+      <li>Hidra Gloss - R$110</li>
+
+    </ul>
+  </section>
+  <section id="agendamento">
+    <h2>Agende seu horário</h2>
+    <form id="form-agendamento">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required>
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" required>
+      <label for="procedimento">Procedimento:</label>
+      <select id="procedimento">
+        <option value="" selected> Selecione um procedimento </option>
+        <option value="Cílios">Cílios</option>
+        <option value="Cílios + Henna e Designer">Cílios + Henna e Designer</option>
+      </select>
+      <label for="dia">Dia:</label>
+      <select id="dia"></select>
+      <label for="hora">Hora:</label>
+      <select id="hora"></select>
+      <button type="submit">Confirmar Agendamento</button>
+    </form>
+  </section>
+  <section id="contato">
+    <h2>Entre em contato</h2>
+    <p>WhatsApp: <a href="https://wa.me/5541992730281">WhatsApp</a></p>
+    <p>Instagram: <a href="https://www.Instagram.com/studioveres">@studioveres</a></p>
+    <p>Endereço: Curitiba, PR</p>
+  </section>
+  <footer>
+    <p>&copy; 2024 Studioveres - Todos os direitos reservados.</p>
+  </footer>
+  <script>
+   const procedimentos = {
+  "Cílios": {
+    dias: ["segunda", "quinta", "sexta"],
+    horarios: {
+      segunda: ["09:30-11:30", "14:00-16:00", "17:30-19:30", "20:00-22:00"],
+      quinta: ["09:30-11:30", "14:00-16:00", "17:30-19:30", "20:00-22:00"],
+      sexta: ["09:30-11:30", "14:00-16:00", "17:30-19:30", "20:00-22:00"]
+    }
+  },
+  "Cílios + Henna e Designer": {
+    dias: ["terça", "quarta", "sabado"],
+    horarios: {
+      terça: ["Cílios: 09:30-11:30", "Henna: 12:00-14:00", "Cílios: 15:00-17:00", "Henna: 18:00-20:00", "Cílios: 20:00-22:00"],
+      quarta: ["Cílios: 09:30-11:30", "Henna: 12:00-14:00", "Cílios: 15:00-17:00", "Henna: 18:00-20:00", "Cílios: 20:00-22:00"],
+      sabado: ["Henna: 08:30-10:30", "Cílios: 11:00-13:00", "Henna: 14:00-16:00", "Cílios: 17:00-19:00", "Cílios: 20:00-22:00"]
+    }
+  }
+};
+
+
+    const selectProcedimento = document.getElementById("procedimento");
+    const selectDia = document.getElementById("dia");
+    const selectHora = document.getElementById("hora");
+
+    selectProcedimento.addEventListener("change", () => {
+  const procedimentoSelecionado = selectProcedimento.value;
+  
+  if (procedimentoSelecionado === "") {
+    selectDia.innerHTML = "";
+    selectHora.innerHTML = "";
+  } else {
+    const diasDisponiveis = procedimentos[procedimentoSelecionado].dias;
+    const horariosDisponiveis = procedimentos[procedimentoSelecionado].horarios;
+    
+    selectDia.innerHTML = "";
+    diasDisponiveis.forEach(dia => {
+      const option = document.createElement("option");
+      option.value = dia;
+      option.text = dia.charAt(0).toUpperCase() + dia.slice(1);
+      selectDia.appendChild(option);
+    });
+    
+    selectDia.addEventListener("change", () => {
+      const diaSelecionado = selectDia.value;
+      const horariosDoDia = horariosDisponiveis[diaSelecionado];
+      
+      selectHora.innerHTML = "";
+      horariosDoDia.forEach(horario => {
+        const option = document.createElement("option");
+        option.value = horario;
+        option.text = horario;
+        selectHora.appendChild(option);
+      });
+    });
+    
+    // Preencha o select de hora com as opções de hora para o primeiro dia
+    const primeiroDia = diasDisponiveis[0];
+    const horariosDoPrimeiroDia = horariosDisponiveis[primeiroDia];
+    
+    selectHora.innerHTML = "";
+    horariosDoPrimeiroDia.forEach(horario => {
+      const option = document.createElement("option");
+      option.value = horario;
+      option.text = horario;
+      selectHora.appendChild(option);
+    });
+  }
+});
+
+    const formAgendamento = document.getElementById("form-agendamento");
+
+    formAgendamento.addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+  const nome = document.getElementById("nome").value;
+  const telefone = document.getElementById("telefone").value;
+  const procedimento = document.getElementById("procedimento").value;
+  const dia = document.getElementById("dia").value;
+  const hora = document.getElementById("hora").value;
+  
+  if (dia === "" || hora === "") {
+    alert("Por favor, selecione um dia e hora para o agendamento.");
+    return;
+  }
+  
+  const mensagem = `Olá, eu sou ${nome} e gostaria de agendar ${procedimento} para ${dia} às ${hora}. Meu telefone é ${telefone}.`;
+  const url = `https://wa.me/41992730281?text=${encodeURIComponent(mensagem)}`;
+  window.open(url, "_blank");
+});
+
+</script>
+</body>
+</html>
+
+
+
+
+

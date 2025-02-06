@@ -1,0 +1,76 @@
+body {
+    background-image: url('img/fundo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity:5.0;
+  
+}
+
+header {
+    
+    border-radius: 10px;
+    background-image: radial-gradient(rgba(147, 94, 99, 0.782), rgba(112, 72, 76, 0.782));
+    padding: 20px;
+    text-align: center;
+    color: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif  ;
+      
+}
+
+
+
+.imagem-circular {
+    width: 130px; /* ajuste o tamanho da imagem */
+    height: 130px; /* ajuste o tamanho da imagem */
+    background-image: url('img/imagem cv.jpg'); /* substitua por sua imagem */
+    background-size: cover;
+    border-radius: 50%; /* torna a imagem circular */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* opcional, para adicionar sombra */
+    margin-top: 10px; /* ajuste o valor para posicionar a imagem após a header*/
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+section {
+    padding: 50px;
+}
+
+.btn {
+    background-color: rgb(148, 108, 118, 0.782);
+    color: whitesmoke;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: rgb(141, 108, 116, 0.782);
+    color: black;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
